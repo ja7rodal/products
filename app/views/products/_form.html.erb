@@ -3,17 +3,26 @@
     <div class="col-sm-6 col-sm-offset-3">
       <h2><%= form_title %></h2>
       <%= form_for @product do |f| %>
-        <div class="form-group">
-          <%= f.text_field :name, class: "form-control input-lg" , placeholder: "Producto" %>
-        </div>
+      <div class="form-group">
+        <%= f.text_field :name, class: "form-control input-lg" , placeholder: "Producto" %>
+      </div>
 
-        <div class="form-group">
-          <%= f.number_field :price, class: "form-control input-lg" , placeholder: "Precio" %>
-        </div>
+      <div class="form-group">
+        <%= f.number_field :price, class: "form-control input-lg" , placeholder: "Precio" %>
+      </div>
 
-        <div class="form-group">
-          <%= f.submit form_title, class: "btn btn-primary btn-lg btn-block" %>
-        </div>
+      <% Category.all.each do |cat| %>
+
+      <div class="form-group">
+        <%= check_box_tag 'product[category_ids][]', cat.id %>
+        <%= label_tag(:category, cat.name) %>
+
+      </div>
+      <% end %>
+      <div class="form-group">
+        <%= f.submit form_title, class: "btn btn-primary btn-lg btn-block" %>
+      </div>
+
 
       <% end %>
     </div>

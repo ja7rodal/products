@@ -22,7 +22,9 @@
           <tr>
             <td><%= product.name %></td>
             <td><%= product.price %></td>
-            <td>categorias??</td>
+            <td><%= product.categories.pluck(:name).join(",")  %>
+
+            </td>
             <td><%= link_to 'Editar', edit_product_path(product) %>
               <%= link_to 'Eliminar', product, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
             </tr>
